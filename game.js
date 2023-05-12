@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 (() => {
-  const FIGURES_ENG = ["rock", "scissors", "paper"];
-  const FIGURES_RUS = ["камень", "ножницы", "бумага"];
+  const FIGURES_ENG = ['rock', 'scissors', 'paper'];
+  const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
 
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
@@ -16,22 +16,22 @@
       computer: 0,
     };
     const lang =
-      language === "EN" || language === "ENG" ? FIGURES_ENG : FIGURES_RUS;
+      language === 'EN' || language === 'ENG' ? FIGURES_ENG : FIGURES_RUS;
 
     const getFigure = () => {
       const exitExpression =
-        lang === FIGURES_ENG
-          ? "Are you sure you want to get out?"
-          : "Точно ли Вы хотите выйти?";
+        lang === FIGURES_ENG ?
+          'Are you sure you want to get out?' :
+          'Точно ли Вы хотите выйти?';
       return exitExpression;
     };
 
-    const compWord = lang === FIGURES_ENG ? "Computer" : "Компьютер";
-    const you = lang === FIGURES_ENG ? "You" : "Вы";
-    const winner = lang === FIGURES_ENG ? "win" : "выиграл";
-    const draw = lang === FIGURES_ENG ? "draw" : "Ничья";
-    const user = lang === FIGURES_ENG ? "player" : "Игрок";
-    const resultat = lang === FIGURES_ENG ? "Result" : "Результат";
+    const compWord = lang === FIGURES_ENG ? 'Computer' : 'Компьютер';
+    const you = lang === FIGURES_ENG ? 'You' : 'Вы';
+    const winner = lang === FIGURES_ENG ? 'win' : 'выиграл';
+    const draw = lang === FIGURES_ENG ? 'draw' : 'Ничья';
+    const user = lang === FIGURES_ENG ? 'player' : 'Игрок';
+    const resultat = lang === FIGURES_ENG ? 'Result' : 'Результат';
 
     return function start() {
       const computer = getRandomIntInclusive(0, 2);
@@ -48,15 +48,14 @@
                         ${draw}`);
           return start();
         }
-        if (answer[0] === "к" || answer[0] === "r") {
+        if (answer[0] === 'к' || answer[0] === 'r') {
           if (compAnswer === lang[2]) {
             result.computer += 1;
             alert(`
                 ${compWord}:${compAnswer}
                 ${you}:${lang[0]}
                 ${compWord} ${winner}`);
-          }
-          if (compAnswer === lang[1]) {
+          } else {
             result.player += 1;
             alert(`
                 ${compWord}:${compAnswer}
@@ -64,15 +63,14 @@
                 ${user} ${winner}`);
           }
         }
-        if (answer[0] === "н" || answer[0] === "s") {
+        if (answer[0] === 'н' || answer[0] === 's') {
           if (compAnswer === lang[0]) {
             result.computer += 1;
             alert(`
                 ${compWord}:${compAnswer}
                 ${you}:${lang[1]}
                 ${compWord} ${winner}`);
-          }
-          if (compAnswer === lang[2]) {
+          } else {
             result.player += 1;
             alert(`
                 ${compWord}:${compAnswer}
@@ -80,15 +78,14 @@
                 ${user} ${winner}`);
           }
         }
-        if (answer[0] === "б" || answer[0] === "p") {
+        if (answer[0] === 'б' || answer[0] === 'p') {
           if (compAnswer === lang[1]) {
             result.computer += 1;
             alert(`
                 ${compWord}:${compAnswer}
                 ${you}:${lang[2]}
                 ${compWord} ${winner}`);
-          }
-          if (compAnswer === lang[0]) {
+          } else {
             result.player += 1;
             alert(`
                 ${compWord}:${compAnswer}
@@ -98,9 +95,9 @@
         }
 
         if (result.player > result.computer) {
-          return "player";
+          return 'player';
         } else {
-          return "computer";
+          return 'computer';
         }
       } else {
         const exit = confirm(getFigure());

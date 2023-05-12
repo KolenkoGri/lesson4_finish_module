@@ -9,6 +9,9 @@
   };
 
   const game = (firstMotion) => {
+    if (!firstMotion) {
+      return;
+    }
     const result = {
       player: 5,
       computer: 5,
@@ -36,6 +39,8 @@
             result.computer -= +answer;
             result.player += +answer;
           }
+        } else {
+          return start();
         }
         turn();
         console.log(result.computer, result.player);
