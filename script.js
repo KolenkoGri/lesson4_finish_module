@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const allGame = () => {
   const startGame = window.rps();
@@ -6,7 +6,7 @@ const allGame = () => {
   const first = startGame();
   const startMarbles = window.marbles(first);
 
-  marbles();
+  startMarbles();
 };
 
 allGame();

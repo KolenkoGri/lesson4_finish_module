@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 (() => {
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    let sum = Math.floor(Math.random() * (max - min + 1) + min);
+    const sum = Math.floor(Math.random() * (max - min + 1) + min);
     return sum;
   };
 
@@ -14,22 +14,23 @@
       computer: 5,
     };
     console.log(firstMotion, firstMotion);
-    // if (firstMotion === player) {
-    //   start();
-    // }
     return function start() {
+      if (firstMotion === 'computer') {
+        firstMotion = '';
+        return turn();
+      }
       if (result.player > 0 && result.computer > 0) {
         const answer = prompt(
-          `Введите количество шариков от 1 до ${result.player}`
+            `Введите количество шариков от 1 до ${result.player}`,
         );
         if (answer) {
           let computer = getRandomIntInclusive(1, 2);
           if (computer % 2 === 0) {
-            computer = "even";
+            computer = 'even';
           } else {
-            computer = "odd";
+            computer = 'odd';
           }
-          if (answer % 2 === 0 && computer === "even") {
+          if (answer % 2 === 0 && computer === 'even') {
             result.computer += +answer;
             result.player -= +answer;
           } else {
@@ -37,6 +38,7 @@
             result.player += +answer;
           }
         }
+        turn();
         console.log(result.computer, result.player);
       } else {
         alert(`Игра окончена !
@@ -45,19 +47,19 @@
         `);
         return;
       }
-      turn();
+      // eslint-disable-next-line require-jsdoc
       function turn() {
         if (result.player > 0 && result.computer > 0) {
           const computer = getRandomIntInclusive(1, result.computer);
           let answer = confirm(
-            `Число чётное? Если да , жмите ОК . Если нет , жмите отмена`
+              `Число чётное? Если да , жмите ОК . Если нет , жмите отмена`,
           );
           if (answer % 2 === 0) {
-            answer = "even";
+            answer = 'even';
           } else {
-            answer = "odd";
+            answer = 'odd';
           }
-          if (computer % 2 === 0 && answer === "even") {
+          if (computer % 2 === 0 && answer === 'even') {
             result.computer -= +computer;
             result.player += +computer;
             console.log(result.computer, result.player);
@@ -66,15 +68,15 @@
             result.player -= +computer;
             console.log(result.computer, result.player);
           }
+          console.log(result.computer, result.player);
           return start();
         } else {
           alert(`Игра окончена !
             Итого шариков у игрока: ${result.player}
             Итого шариков у компюьтера: ${result.computer}
             `);
-          return;
+          return 'end';
         }
-        console.log(result.computer, result.player);
       }
     };
   };
