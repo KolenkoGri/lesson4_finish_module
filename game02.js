@@ -13,7 +13,6 @@
       player: 5,
       computer: 5,
     };
-    console.log(firstMotion, firstMotion);
     return function start() {
       if (firstMotion === 'computer') {
         firstMotion = '';
@@ -62,13 +61,10 @@
           if (computer % 2 === 0 && answer === 'even') {
             result.computer -= +computer;
             result.player += +computer;
-            console.log(result.computer, result.player);
           } else {
             result.computer += +computer;
             result.player -= +computer;
-            console.log(result.computer, result.player);
           }
-          console.log(result.computer, result.player);
           return start();
         } else {
           alert(`Игра окончена !
