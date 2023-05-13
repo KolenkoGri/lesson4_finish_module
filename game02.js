@@ -22,10 +22,14 @@
         return turn();
       }
       if (result.player > 0 && result.computer > 0) {
+        alert(`
+            Очков у компьютера: ${result.computer}
+            Очков у пользователя: ${result.player}`);
         const answer = prompt(
             `Введите количество шариков от 1 до ${result.player}`,
         );
-        if (answer) {
+        if (answer > 1 && result.player > result.computer ?
+          answer <= result.computer : answer <= result.player) {
           let computer = getRandomIntInclusive(1, 2);
           if (computer % 2 === 0) {
             computer = 'even';
@@ -46,15 +50,21 @@
         console.log(result.computer, result.player);
       } else {
         alert(`Игра окончена !
-        Итого шариков у игрока: ${result.player}
-        Итого шариков у компюьтера: ${result.computer}
-        `);
+            Итого шариков у игрока: ${result.player}
+            Итого шариков у компюьтера: ${result.computer}
+            Победил ${result.player > result.computer ?
+              'игрок' : 'компьютер'}
+            `);
         return;
       }
       // eslint-disable-next-line require-jsdoc
       function turn() {
         if (result.player > 0 && result.computer > 0) {
-          const computer = getRandomIntInclusive(1, result.computer);
+          alert(`
+            Очков у компьютера: ${result.computer}
+            Очков у пользователя: ${result.player}`);
+          const computer = getRandomIntInclusive(1, result.computer >
+            result.player ? result.computer : result.player);
           let answer = confirm(
               `Число чётное? Если да , жмите ОК . Если нет , жмите отмена`,
           );
@@ -75,6 +85,8 @@
           alert(`Игра окончена !
             Итого шариков у игрока: ${result.player}
             Итого шариков у компюьтера: ${result.computer}
+            Победил ${result.player > result.computer ?
+              'игрок' : 'компьютер'}
             `);
           return 'end';
         }
