@@ -64,7 +64,7 @@
             Очков у компьютера: ${result.computer}
             Очков у пользователя: ${result.player}`);
           const computer = getRandomIntInclusive(1, result.computer >
-            result.player ? result.computer : result.player);
+            result.player ? result.player : result.computer);
           let answer = confirm(
               `Число чётное? Если да , жмите ОК . Если нет , жмите отмена`,
           );
